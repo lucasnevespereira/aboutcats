@@ -1,6 +1,7 @@
 # aboutcats
 
-React app with cat's information.
+React app with cat breed's information.
+This app was inspired by Andrei Neagoie RoboFriends App.
 
 ### Run the project
 
