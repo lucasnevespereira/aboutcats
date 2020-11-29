@@ -1,54 +1,46 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
 import "./App.css";
 import catData from "../cats";
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      cats: [],
-      searchfield: "",
-    };
-  }
+const App = () => {
+  // Similar to this.state in React Classes
+  const [cats, setCats] = useState([]);
+  const [searchfield, setSearchfield] = useState("");
 
-  componentDidMount() {
-    this.setState({ cats: catData }, () => {
-      console.log(this.state.cats);
-    });
-  }
+  // Similar to componentDidMount and componentDidUpdate in React Classes
+  useEffect(() => {
+    setCats(catData);
+  }, []);
 
-  onSearchChange = (event) => {
-    this.setState({ searchfield: event.target.value });
+  const onSearchChange = (event) => {
+    setSearchfield(event.target.value);
   };
 
-  render() {
-    const { cats, searchfield } = this.state;
-    const filteredCats = cats.filter((cat) => {
-      return cat.breed.toLowerCase().includes(searchfield.toLowerCase());
-    });
-    return !cats.length ? (
-      <h1>Loading..</h1>
-    ) : (
-      <div className="tc">
-        <div className="title">
-          <img
-            className="logo"
-            src={require("../assets/pawprint.svg")}
-            alt="logo"
-          />
-          <h1 className="f1">AboutCats</h1>
-        </div>
-
-        <SearchBox searchChange={this.onSearchChange} />
-        <Scroll>
-          <CardList cats={filteredCats} />
-        </Scroll>
+  const filteredCats = cats.filter((cat) => {
+    return cat.breed.toLowerCase().includes(searchfield.toLowerCase());
+  });
+  return !cats.length ? (
+    <h1>Loading..</h1>
+  ) : (
+    <div className="tc">
+      <div className="title">
+        <img
+          className="logo"
+          src={require("../assets/pawprint.svg")}
+          alt="logo"
+        />
+        <h1 className="f1">AboutCats</h1>
       </div>
-    );
-  }
-}
+
+      <SearchBox searchChange={onSearchChange} />
+      <Scroll>
+        <CardList cats={filteredCats} />
+      </Scroll>
+    </div>
+  );
+};
 
 export default App;
