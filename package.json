@@ -1,5 +1,5 @@
 {
-  "name": "robofriends",
+  "name": "aboutcats",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +15,7 @@
     "eject": "react-scripts eject"
   },
   "browserslist": {
-    "production": [ 
+    "production": [
       ">0.2%",
       "not dead",
       "not op_mini all"

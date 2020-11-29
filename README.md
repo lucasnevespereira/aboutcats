@@ -1,7 +1,9 @@
-# robofriends
-Tutorial for React
-To run the project:
+# aboutcats
 
-1. Clone this repo
-2. Run `npm install`
-3. Run `npm start`
+React app with cat's information.
+
+### Run the project
+
+- Clone repo
+- Run `npm install`
+- Run `npm start`
